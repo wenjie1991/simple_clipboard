@@ -1,0 +1,15 @@
+#!/usr/bin/env perl6
+
+sub MAIN(:i(:$input) = False, :o(:$output) = False) {
+    if ($input) {
+        say "input";
+        spurt("/tmp/clipboard.txt", $*IN.slurp.chomp);
+    } elsif ($output) {
+        "/tmp/clipboard.txt".IO.slurp.put;
+    } else {
+        $*USAGE.say;
+        exit 1;
+    }
+}
+
+# vim: syntax=perl6 ts=2 sw=4 sts=4 sr noet
